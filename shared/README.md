@@ -11,6 +11,7 @@ Start with: vertx run ClientVerticle.java
 
 You should see output similar to:
 
+```
 Object name: 0:ffffc0a80011:d7f1:536e7c9b:0
 ARJUNA012163: Starting service com.arjuna.ats.arjuna.recovery.ActionStatusService on port 55282 
 ARJUNA012337: TransactionStatusManagerItem host: 127.0.0.1 port: 55282 
@@ -29,6 +30,7 @@ ClientVerticle initialised state: 20
 Succeeded in deploying verticle 
 SampleVerticle1 initialised state with: 21
 SampleVerticle1 SUCCEEDED!
+```
 
 Here we have the two verticles sharing the same transactional object (state).
 
@@ -39,6 +41,7 @@ If you then uncomment the following line in ClientVerticle.java:
 Rerun the same vertx command. Depending upon how each new verticle is executed in relation to
 the others, you could see:
 
+```
 Object name: 0:ffffc0a80011:d7e1:536e7ac5:0
 ARJUNA012163: Starting service com.arjuna.ats.arjuna.recovery.ActionStatusService on port 55266 
 ARJUNA012337: TransactionStatusManagerItem host: 127.0.0.1 port: 55266 
@@ -67,9 +70,11 @@ SampleVerticle2 initialised state with: 23
 SampleVerticle2 SUCCEEDED!
 SampleVerticle2 initialised state with: 25
 SampleVerticle2 SUCCEEDED!
+```
 
 Or you could see output containing one or more of the following:
 
+```
 org.jboss.stm.LockException: Thread[vert.x-eventloop-thread-3,5,main] could not set LockMode.WRITE lock. Got: LockResult.REFUSED
 	at org.jboss.stm.internal.reflect.InvocationHandler.invoke(InvocationHandler.java:344)
 	at $Proxy13.increment(Unknown Source)
@@ -111,6 +116,7 @@ org.jboss.stm.LockException: Thread[vert.x-eventloop-thread-4,5,main] could not 
 	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:353)
 	at io.netty.util.concurrent.SingleThreadEventExecutor$2.run(SingleThreadEventExecutor.java:101)
 	at java.lang.Thread.run(Thread.java:722)
+```
 
 The multiple verticle instances are likely to interfere with each other as they try to read or write to the
 same object. The transaction system will always ensure consistency and in the case of a conflict or error such as
