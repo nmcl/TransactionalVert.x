@@ -1,7 +1,7 @@
 TransactionalVert.x
 ===================
 
-[Considered frozen now as effort has moved to the Narayana project http://narayana.io]
+Considered frozen now as effort has moved to the [Narayana project](http://narayana.io)
 
 Start by adding the contents of lib and etc directories to your classpath. These are here for convenience and you should always take the most recent versions from maven.
 
