@@ -1,7 +1,7 @@
 TransactionalVert.x
 ===================
 
-This work should be considered frozen now as all effort has moved to the [Narayana project.](http://narayana.io)
+This work should be considered frozen now as all effort has moved to the [Narayana project.](http://narayana.io) Some of this is surfacing in Quarkus.
 
 --
 
